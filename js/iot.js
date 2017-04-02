@@ -109,12 +109,22 @@ function comparaCuadrado(){
     if(area1>area2){
         if(cuadradoInscrito(c1, c2)){
             console.log('c2 esta dentro de c1');
+            var c2position = c2.offset();
+            var c2top = c2position.top;
+            var c2left = c2position.left;
             c1.append(c2);
+            c2.offset({ top: c2top, left: c2left });
+            c2.draggable({ containment: "parent" }).resizable();
         }
     }else{
         if(cuadradoInscrito(c2, c1)){
             console.log('c1 esta dentro de c2');
+            var c1position = c1.offset();
+            var c1top = c1position.top;
+            var c1left = c1position.left;
             c2.append(c1);
+            c1.offset({ top: c1top, left: c1left });
+            c1.draggable({ containment: "parent" }).resizable();
         }
     }
 //    $('#box').append(elemento);
