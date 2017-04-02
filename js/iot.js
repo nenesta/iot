@@ -35,7 +35,7 @@ $(document).ready(function(){
 			  xPos = offset.left;
 			  yPos = offset.top;
 			  if(xPos>xPosBox && yPos>yPosBox){
-        			elemento = $(this).clone().draggable();
+        			elemento = $(this).clone().draggable({ containment: "parent" }).resizable();//.selectable();
 				elemento.css('position', 'absolute');
 				elemento.css('background-color', '#ffff00');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
