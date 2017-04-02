@@ -43,7 +43,7 @@ $(document).ready(function(){
                                 elemento.prop('id', 'cuad-'+contCuad++);
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
-				console.log((elemento).attr('css'));
+//				console.log((elemento).attr('css'));
 			  }
 		}	
 	});
@@ -80,4 +80,72 @@ function areaCuadrado(position, width, height){
    var largo = Math.abs(position.left - right);
    var ancho = Math.abs(position.top - bottom);
    return largo * ancho;
+}
+
+function areaCuadrado(cuad){
+   var position = cuad.offset();
+   var width = cuad.css('width');
+   var height = cuad.css('height');
+   var right = Math.abs(position.left) + parseInt(width, 10);
+   var bottom = Math.abs(position.top) + parseInt(height, 10);
+   var largo = Math.abs(position.left - right);
+   var ancho = Math.abs(position.top - bottom);
+   return largo * ancho;
+}
+
+function comparaCuadrado(){
+    var c1 = $('#cuad-0');
+    var c2 = $('#cuad-1');
+    var area1 = areaCuadrado(c1);
+    console.log('area1');
+    console.log(area1);
+    var area2 = areaCuadrado(c2);
+    console.log('area2');
+    console.log(area2);
+    console.log('cuadradoInscrito(c1, c2)');
+//    console.log(c1.html());
+//    console.log(c2.html());
+    console.log(cuadradoInscrito(c1, c2));
+    if(area1>area2){
+        if(cuadradoInscrito(c1, c2)){
+            console.log('c2 esta dentro de c1');
+            c1.append(c2);
+        }
+    }else{
+        if(cuadradoInscrito(c2, c1)){
+            console.log('c1 esta dentro de c2');
+            c2.append(c1);
+        }
+    }
+//    $('#box').append(elemento);
+}
+
+function cuadradoInscrito(cuad1, cuad2){
+    var cuad1Position = cuad1.offset();
+    var width1 = cuad1.css('width');
+    var height1 = cuad1.css('height');
+    var right1 = Math.abs(cuad1Position.left) + parseInt(width1, 10);
+    var bottom1 = Math.abs(cuad1Position.top) + parseInt(height1, 10);
+    var cuad2Position = cuad2.offset();
+    var width2 = cuad2.css('width');
+    var height2 = cuad2.css('height');
+    var right2 = Math.abs(cuad2Position.left) + parseInt(width2, 10);
+    var bottom2 = Math.abs(cuad2Position.top) + parseInt(height2, 10);
+//    console.log(cuad1Position.left);
+//    console.log(cuad2Position.left);
+//    console.log(cuad1Position.left<cuad2Position.left);
+//    console.log(cuad1Position.top);
+//    console.log(cuad2Position.top);
+//    console.log(cuad1Position.top<cuad2Position.top);
+//    console.log(right1);
+//    console.log(right2);
+//    console.log(right1>right2);
+//    console.log(bottom1);
+//    console.log(bottom2);
+//    console.log(bottom1>bottom2);
+    if (cuad1Position.left<cuad2Position.left && cuad1Position.top<cuad2Position.top && right1>right2 && bottom1>bottom2){
+        return true;
+    }else{
+        return false;
+    }
 }
