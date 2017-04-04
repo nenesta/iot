@@ -129,6 +129,113 @@ function comparaCuadrado(){
     }
 //    $('#box').append(elemento);
 }
+function sortResults(json, prop, asc) {
+    json = json.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
+//    showResults();
+}
+
+function comparaCuadrados(){
+    var regs = [];
+//    $('.cuadrado').each(function(){
+//        var registro = {};
+//        if($(this).prop('id')!='cuadrado'){
+//            registro["id"]=$(this).prop('id');
+//            registro["area"]=areaCuadrado($(this));
+//            console.log(registro);
+//            regs.push(registro);
+//        };
+//    });
+    $('#box div.cuadrado').each(function(){
+        var registro = {};
+        registro["id"]=$(this).prop('id');
+        registro["area"]=areaCuadrado($(this));
+        console.log(registro);
+        regs.push(registro);
+    });
+    console.log(regs);
+    console.log(regs.length);
+    sortResults(regs, 'area', false);
+    $.each(regs, function(i, item) {
+        console.log(i);
+        console.log(item);
+        console.log($('#'+item.id).html());
+//        if(i>0){
+//            if(cuadradoInscrito(c1, c2)){
+//                console.log('c2 esta dentro de c1');
+//                var c2position = c2.offset();
+//                var c2top = c2position.top;
+//                var c2left = c2position.left;
+//                c1.append(c2);
+//                c2.offset({ top: c2top, left: c2left });
+//                c2.draggable({ containment: "parent" }).resizable();
+//            }
+//        }
+        
+    });
+    console.log('*********** BURBUJA *************');
+    if(regs.length>1){
+        $.each(regs, function(i, item) {
+           if(i<regs.length-1){
+               $.each(regs, function(j, jtem) {
+                   if(j>i){
+                       console.log(i +'-'+item);
+                       console.log(j +'-'+jtem);
+                        var c1 = $('#'+item.id);
+                        var c2 = $('#'+jtem.id);
+                        if(cuadradoInscrito(c1, c2)){
+                            console.log('c2 esta dentro de c1');
+                            var c2position = c2.offset();
+                            var c2top = c2position.top;
+                            var c2left = c2position.left;
+                            c1.append(c2);
+                            c2.offset({ top: c2top, left: c2left });
+                            c2.draggable({ containment: "parent" }).resizable();
+                        }
+                   }
+               });
+           } 
+        });
+    }
+}
+
+/*
+ $.each(data, function(i, item) {
+    alert(item.PageName);
+});​ 
+ * 
+var people = [
+    {
+        "f_name": "john",
+        "l_name": "doe",
+        "sequence": "0",
+        "title" : "president",
+        "url" : "google.com",
+        "color" : "333333",
+    }
+    // etc
+];
+
+function sortResults(prop, asc) {
+    people = people.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
+    showResults();
+}
+
+Then:
+
+sortResults('l_name', true);
+ */
 
 function cuadradoInscrito(cuad1, cuad2){
     var cuad1Position = cuad1.offset();
