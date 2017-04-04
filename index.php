@@ -8,19 +8,23 @@
         <link type="text/css" href="css/iot.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div id="botonera" width="1000" height="110">
+	<label for="Name">Click me</label>
+		<div id="botonera" width="1200" height="110">
 <!--		
 			<div id="cuadrado" class="cuadrado">
 -->			
-			<div id="cuadrado" class="cuadrado" width="100px" heigth="100px">
+			<div id="cuadrado" class="cuadrado" width="60px" heigth="60px">
 			</div>
 <!--		
 			<div id="circulo" class="circulo">
 -->			
 			<div id="circulo" class="circulo">
+
+			
 			</div>
 		</div>
 		<div id="box">
+		<input id="background-color" type="color" /> 
 		</div>
 	</body>
 </html>
