@@ -40,14 +40,26 @@ $(document).ready(function(){
 				elemento.css('position', 'absolute');
 				//elemento.css('background-color', '#ffff00');
 				elemento.css('background-color', 'rgb('+255*Math.random()+', '+255*Math.random()+', '+255*Math.random()+')');
-                                elemento.prop('id', 'cuad-'+contCuad++);
-                                $(this).offset({ top: yPosOld, left: xPosOld });
+        var nombreCaja='cuad-'+contCuad++;
+        elemento.prop('id', nombreCaja);
+        //document.getElementById('nombreCaja').addEventListener("Click",ClicCaja);
+        $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
 //				console.log((elemento).attr('css'));
 			  }
 		}	
 	});
+
+   
+
+ //   $('#box').click(function (e) {
+ //       var id = e.target.id;
+ //       console.log(id);
+ //   })
+
+
 	
+
 	$(".circulo").draggable({
 		start: function(event, ui){
 			  console.log("CIRC: Se ha producido el evento start");

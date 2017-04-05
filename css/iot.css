@@ -1,7 +1,29 @@
+.botonera{
+       border: 2px solid #555;
+       width: 400px;
+       height: 150px;
+       margin-left:10px;
+       box-shadow: 5px 5px 0 #333;
+   -webkit-box-shadow: 5px 5px 0 #333;
+   -moz-box-shadow: 5px 5px 0 #333;
+
+}
+
+.panelPropiedades{
+    width: 918px;
+    height: 150px;
+    position: fixed;
+    left: 412px;
+    top: 74px;
+    border: 2px solid #555;
+}
+
+
+
 .cuadrado {
-     width: 100px; 
-     height: 100px; 
-     border: 3px solid #555;
+     width: 60px; 
+     height: 60px; 
+     border: 2px solid #555;
      
      
      
@@ -15,26 +37,35 @@
 }
 
 .circulo {
-     width: 50px;//100px;
-     height: 50px;//100px;
+     width: 30px;//100px;
+     height: 30px;//100px;
      -moz-border-radius: 50%;
      -webkit-border-radius: 50%;
      border-radius: 50%;
      background: #5cb85c;
-   --padding: 0px 0px 0px 0px;
+   --padding: 3px 3px 3px 3px;
    --position : absolute;
    --float: inherit;
 }
 
 #box{
-     width: 1200px;
-     height: 400px;
+     width: 1320px;
+     height: 430px;
    border-style: solid;
+     --padding: 3px 3px 3px 3px;
       border-radius: 10px 10px 10px 10px;
       -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-   --position : absolute
-   --margin: 100px 0px 0px 0px;
+   --position : absolute;
+   margin: 5px 5px 5px 10px;
 
 }
+
+.hr {
+    height: 1px;
+    border: 0;
+    background-color: black;
+    margin:0px 0px 10px 0px;
+}
+
