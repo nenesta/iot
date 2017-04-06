@@ -62,6 +62,7 @@
 				
 			</div>
 			<div id="circulo" class="circulo"></div>
+			<!-- Prueba Banch andres -->
 		</div>
 		<div id="box">
 			<h4 class="Heading 4">Contenedor</h4>
