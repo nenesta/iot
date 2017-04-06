@@ -3,18 +3,18 @@
        width: 400px;
        height: 150px;
        margin-left:10px;
-       box-shadow: 5px 5px 0 #333;
-   -webkit-box-shadow: 5px 5px 0 #333;
-   -moz-box-shadow: 5px 5px 0 #333;
+       position: absolute;
+       left: 2px;
+       top: 0px;
 
 }
 
 .panelPropiedades{
     width: 918px;
     height: 150px;
-    position: fixed;
+    position:absolute;
     left: 412px;
-    top: 74px;
+    top: 0px;
     border: 2px solid #555;
 }
 
@@ -51,7 +51,10 @@
 #box{
      width: 1320px;
      height: 430px;
-   border-style: solid;
+     top: 152px;
+     position: absolute;
+     border: 2px solid #555;
+     border-style: solid;
      --padding: 3px 3px 3px 3px;
       border-radius: 10px 10px 10px 10px;
       -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -68,4 +71,6 @@ box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     background-color: black;
     margin:0px 0px 10px 0px;
 }
+
+
 

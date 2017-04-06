@@ -1,12 +1,12 @@
    $(document).ready(function(){
 
 
-   $('#box').mouseover(function (e) {
+   $('#box').click(function (e) {
         var id = e.target.id;
         console.log(id);
-        var label1 = document.getElementById("lbl1")
-        console.log(label1);
-        //label1.innerHTML= id;
+        var textContenedor = document.getElementById("Idcontenedor")
+        console.log(textContenedor);
+        textContenedor.value= id;
     })
 
 });
