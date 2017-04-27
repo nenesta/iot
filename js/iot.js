@@ -204,6 +204,16 @@ function comparaCuadrados(){
     }
 }
 
+function revisaRecursiva(){
+    console.log($(this));
+    console.log($('#box div.cuadrado').length);
+    $('#box div.cuadrado').each(function(i, v){
+        console.log('i '+i);
+        console.log('v '+$(v).html());
+        console.log('v '+$(v).parent().prop("tagName"));
+        console.log('v '+$(v).parent().prop("id"));
+    });
+}
 /*
  $.each(data, function(i, item) {
     alert(item.PageName);
