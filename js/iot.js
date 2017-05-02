@@ -39,11 +39,12 @@ $(document).ready(function(){
         			elemento = $(this).clone().draggable({ containment: "parent" }).resizable();//.selectable();
 				elemento.css('position', 'absolute');
 				//elemento.css('background-color', '#ffff00');
-				elemento.css('background-color', 'rgb('+255*Math.random()+', '+255*Math.random()+', '+255*Math.random()+')');
+				elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
                                 elemento.prop('id', 'cuad-'+contCuad++);
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
-//				console.log((elemento).attr('css'));
+                                console.log("Llama a Compara Cuadrados")
+                                comparaCuadrados();
 			  }
 		}	
 	});
@@ -195,7 +196,12 @@ function comparaCuadrados(){
                             var c2left = c2position.left;
                             c1.append(c2);
                             c2.offset({ top: c2top, left: c2left });
-                            c2.draggable({ containment: "parent" }).resizable();
+                            c2.draggable({containment: "parent",
+                                          stop: function(event, ui){
+                                                comparaCuadrados();
+                                                console.log("COMPCUAD Llama a Compara Cuadrados")
+                                             }                                
+                                         }).resizable();
                         }
                    }
                });
