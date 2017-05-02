@@ -201,7 +201,10 @@ function comparaCuadrados(){
                                                 comparaCuadrados();
                                                 console.log("COMPCUAD Llama a Compara Cuadrados")
                                              }                                
-                                         }).resizable();
+                                         }).resizable().dblclick(function(){ 
+                                                                            console.log("Se presiona doble clic" +$(this).prop("id"))
+                                                                            $(this).remove();
+                                                                           });
                         }
                    }
                });
