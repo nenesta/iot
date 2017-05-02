@@ -21,6 +21,10 @@ $(document).ready(function(){
 //    		console.log("El ratón ya no está sobre el div negro");
 // 	});
         
+        $("div.cuadrado").hover(function(){
+        		console.log("Estoy en el cuadrado "+ $(this).prop("id"));
+        		//console.log("Estoy en la posicion "+ $(this).position().top + ' - '+$(this).position().left);
+        	});
 	$(".cuadrado").draggable({
 		start: function(event, ui){
 			  offset = $(this).position();
@@ -201,7 +205,8 @@ function comparaCuadrados(){
                                                 comparaCuadrados();
                                                 console.log("COMPCUAD Llama a Compara Cuadrados")
                                              }                                
-                                         }).resizable().dblclick(function(){ 
+                                         }).resizable().dblclick(function(e){ 
+                                                                            e.stopPropagation();
                                                                             console.log("Se presiona doble clic" +$(this).prop("id"))
                                                                             $(this).remove();
                                                                            });
