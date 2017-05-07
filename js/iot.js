@@ -155,8 +155,8 @@ function sortResults(json, prop, asc) {
 
 function comparaCuadrados(){
     var regs = [];
-//    $('#box .cuadrado, #box .circulo').each(function(){
-    $('#box .cuadrado').each(function(){
+    $('#box .cuadrado, #box .circulo').each(function(){
+//    $('#box .cuadrado').each(function(){
         var registro = {};
         registro["id"]=$(this).prop('id');
         registro["area"]=areaCuadrado($(this));
@@ -177,14 +177,25 @@ function comparaCuadrados(){
                             var c2left = c2position.left;
                             c1.append(c2);
                             c2.offset({ top: c2top, left: c2left });
-                            c2.draggable({containment: "parent",
-                                          stop: function(event, ui){
-                                                comparaCuadrados();
-                                             }                                
-                                         }).resizable().dblclick(function(e){ 
-                                                                            e.stopPropagation();
-                                                                            $(this).remove();
-                                                                           });
+                            if(c2.prop('class')=='cuadrado'){
+                                c2.draggable({containment: "parent",
+                                              stop: function(event, ui){
+                                                    comparaCuadrados();
+                                                 }                                
+                                             }).resizable().dblclick(function(e){ 
+                                                                                e.stopPropagation();
+                                                                                $(this).remove();
+                                                                               });
+                            }else{
+                                c2.draggable({containment: "parent",
+                                              stop: function(event, ui){
+                                                    comparaCuadrados();
+                                                 }                                
+                                             }).dblclick(function(e){ 
+                                                                                e.stopPropagation();
+                                                                                $(this).remove();
+                                                                               });
+                            };
                         }
                    }
                });
