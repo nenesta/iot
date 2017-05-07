@@ -9,6 +9,7 @@ $(document).ready(function(){
 	var yPosBox;
 	var elemento;
         var contCuad=0;
+        var contCirc=0;
         
         $("div.cuadrado").hover(function(){
         		////console.log("Estoy en el cuadrado "+ $(this).prop("id"));
@@ -51,10 +52,37 @@ $(document).ready(function(){
 	
 	$(".circulo").draggable({
 		start: function(event, ui){
-			  //console.log("CIRC: Se ha producido el evento start");
+			  offset = $(this).position();
+			  xPosOld = offset.left;
+			  yPosOld = offset.top;
+			  offsetBox = $('#box').position();
+			  xPosBox = offsetBox.left;
+			  yPosBox = offsetBox.top;
+			  
 		},	
 		stop: function(event, ui){
-			  //console.log("CIRC: Se ha producido el evento stop");
+			  offset = $(this).position();
+			  xPos = offset.left;
+			  yPos = offset.top;
+			  if(xPos>xPosBox && yPos>yPosBox){
+        			elemento = $(this).clone().draggable({ containment: "parent",
+                                          stop: function(event, ui){
+                                             } }).dblclick(function(e){ 
+                                                                            e.stopPropagation();
+                                                                            $(this).remove();
+                                                                           });
+				elemento.css('position', 'absolute');
+				elemento.css('width', '36px');
+				elemento.css('height', '36px');
+                                elemento.css('-moz-border-radius', '50%');
+                                elemento.css('webkit-border-radius', '50%');
+                                elemento.css('border-radius', '50%');
+                                elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+                                elemento.prop('id', 'circ-'+contCirc++);
+                                elemento.prop('class', 'circulo');
+                                $(this).offset({ top: yPosOld, left: xPosOld });
+				$('#box').append(elemento);
+			  }
 		}	
 	});
 });
@@ -127,6 +155,7 @@ function sortResults(json, prop, asc) {
 
 function comparaCuadrados(){
     var regs = [];
+//    $('#box .cuadrado, #box .circulo').each(function(){
     $('#box .cuadrado').each(function(){
         var registro = {};
         registro["id"]=$(this).prop('id');
