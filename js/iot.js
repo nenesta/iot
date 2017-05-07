@@ -50,8 +50,11 @@ $(document).ready(function(){
                                                                             $(this).remove();
                                                                            });
 				elemento.css('position', 'absolute');
+				elemento.css('width', '100px');
+				elemento.css('height', '100px');
 				elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
                                 elemento.prop('id', 'cuad-'+contCuad++);
+                                elemento.prop('class', 'cuadrado');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
 			  }
@@ -161,7 +164,8 @@ function comparaCuadrados(){
 //            regs.push(registro);
 //        };
 //    });
-    $('#box div.cuadrado').each(function(){
+    //$('#box div.cuadrado').each(function(){
+    $('#box .cuadrado').each(function(){
         var registro = {};
         registro["id"]=$(this).prop('id');
         registro["area"]=areaCuadrado($(this));

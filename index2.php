@@ -13,17 +13,12 @@
 	<body>
 <!--		<div id="botonera" width="1000" height="110">
 		
-			<div id="cuadrado" class="cuadrado">
-			
 			<div id="cuadrado" class="cuadrado" width="100px" heigth="100px">
 			</div>
-		
-			<div id="circulo" class="circulo">
-			
 			<div id="circulo" class="circulo">
 			</div>
 		</div>-->
-		<div id="icon-bar" width="1000" height="110">
+		<div id="icon-bar-iot" width="1000" height="110">
 <!--		
 			<div id="cuadrado" class="cuadrado">
 -->			
@@ -40,21 +35,10 @@
 			</div>
 		</div>
 
-<!--                <div class="icon-bar">
-                  <a class="active" href="#"><i class="fa fa-home"></i></a>
-                  <a href="#"><i class="fa fa-search"></i></a>
-
+                <div class="icon-bar-iot">
                   <a href="#"><i class="fa fa-square cuadrado"></i></a>
                   <a href="#"><i class="fa fa-circle circulo"></i></a>
-
-                  <a href="#"><i class="fa fa-square"></i></a>
-                  <a href="#"><i class="fa fa-circle"></i></a>
-                  <a href="#"><i class="fa fa-trash"></i></a>
-
-                  
-                  <a href="#"><i class="cuadrado"/></i></a>
-
-                </div>            -->
+                </div>
                 <div id="box">
                 </div>
 	</body>

@@ -9,14 +9,8 @@
 	</head>
 	<body>
 		<div id="botonera" width="1000" height="110">
-<!--		
 			<div id="cuadrado" class="cuadrado">
--->			
-			<div id="cuadrado" class="cuadrado" width="100px" heigth="100px">
 			</div>
-<!--		
-			<div id="circulo" class="circulo">
--->			
 			<div id="circulo" class="circulo">
 			</div>
 		</div>
