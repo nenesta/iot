@@ -40,7 +40,11 @@ $(document).ready(function(){
 			  xPos = offset.left;
 			  yPos = offset.top;
 			  if(xPos>xPosBox && yPos>yPosBox){
-        			elemento = $(this).clone().draggable({ containment: "parent" }).resizable();//.selectable();
+        			elemento = $(this).clone().draggable({ containment: "parent" }).resizable().dblclick(function(e){ 
+                                                                            e.stopPropagation();
+                                                                            console.log("Se presiona doble clic" +$(this).prop("id"))
+                                                                            $(this).remove();
+                                                                           });//.selectable();
 				elemento.css('position', 'absolute');
 				//elemento.css('background-color', '#ffff00');
 				elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
@@ -49,6 +53,18 @@ $(document).ready(function(){
 				$('#box').append(elemento);
                                 console.log("Llama a Compara Cuadrados")
                                 comparaCuadrados();
+/*
+                             c2.draggable({containment: "parent",
+                                          stop: function(event, ui){
+                                                comparaCuadrados();
+                                                console.log("COMPCUAD Llama a Compara Cuadrados")
+                                             }                                
+                                         }).resizable().dblclick(function(e){ 
+                                                                            e.stopPropagation();
+                                                                            console.log("Se presiona doble clic" +$(this).prop("id"))
+                                                                            $(this).remove();
+                                                                           });
+ */
 			  }
 		}	
 	});
