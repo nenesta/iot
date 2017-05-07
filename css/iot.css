@@ -1,25 +1,3 @@
-/*
-.cuadrado {
-     width: 100px; 
-     height: 100px; 
-     background: #428bca;
-	 --padding: 0px 0px 0px 0px;
-	 --position : absolute;
-	 --float: inherit;
-}
-
-.circulo {
-     width: 50px;//100px;
-     height: 50px;//100px;
-     -moz-border-radius: 50%;
-     -webkit-border-radius: 50%;
-     border-radius: 50%;
-     background: #5cb85c;
-	 --padding: 0px 0px 0px 0px;
-	 --position : absolute;
-	 --float: inherit;
-}
-*/
 #box{
      width: 1200px;
      height: 400px;
@@ -27,3 +5,25 @@
 	 //position : absolute
 	 //margin: 100px 0px 0px 0px;
 }
+
+.icon-bar{
+    width: 200px; /* Full-width */
+    height: 36px; /* Full-height */
+    background-color: #555; /* Dark-grey background */
+    //overflow: auto; /* Overflow due to float */
+}
+
+.icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 100px; /* Equal width (5 icons with 20% width each = 100%)
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: yellow;//white; /* White text color */
+    font-size: 36px; /* Increased font size */
+}
+
+.icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
