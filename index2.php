@@ -11,35 +11,11 @@
         <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
 	</head>
 	<body>
-<!--		<div id="botonera" width="1000" height="110">
-		
-			<div id="cuadrado" class="cuadrado" width="100px" heigth="100px">
-			</div>
-			<div id="circulo" class="circulo">
-			</div>
-		</div>-->
-		<div id="icon-bar-iot" width="1000" height="110">
-<!--		
-			<div id="cuadrado" class="cuadrado">
--->			
-                        <div width="150px" heigth="150px">
-                            <div id="cuadrado" class="cuadrado" width="100px" heigth="100px">
-                            </div>
-                        </div>
-<!--		
-			<div id="circulo" class="circulo">
--->			
-			<div width="150px" heigth="150px">
-                            <div id="circulo" class="circulo">
-                            </div>
-			</div>
-		</div>
-
-                <div class="icon-bar-iot">
-                  <a href="#"><i class="fa fa-square cuadrado"></i></a>
-                  <a href="#"><i class="fa fa-circle circulo"></i></a>
-                </div>
-                <div id="box">
-                </div>
+            <div class="icon-bar-iot">
+              <a href="#"><i class="fa fa-square cuadrado"></i></a>
+              <a href="#"><i class="fa fa-circle circulo"></i></a>
+            </div>
+            <div id="box">
+            </div>
 	</body>
 </html>
