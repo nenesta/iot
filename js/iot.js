@@ -7,6 +7,8 @@ $(document).ready(function(){
 	var offsetBox;
 	var xPosBox;
 	var yPosBox;
+        var widthBox;
+        var heightBox;
 	var elemento;
         var contCuad=0;
         var contCirc=0;
@@ -18,19 +20,23 @@ $(document).ready(function(){
                 
 	$(".cuadrado").draggable({
 		start: function(event, ui){
-			  offset = $(this).position();
+			  offset = $(this).offset();
 			  xPosOld = offset.left;
 			  yPosOld = offset.top;
-			  offsetBox = $('#box').position();
+			  offsetBox = $('#box').offset();
 			  xPosBox = offsetBox.left;
 			  yPosBox = offsetBox.top;
-			  
+                          widthBox = $('#box').css('width');
+                          heightBox = $('#box').css('height');
 		},	
 		stop: function(event, ui){
-			  offset = $(this).position();
+			  offset = $(this).offset();
 			  xPos = offset.left;
 			  yPos = offset.top;
-			  if(xPos>xPosBox && yPos>yPosBox){
+                          
+                          console.log('xPos '+xPos);
+                          console.log('yPos '+yPos);
+			  if(xPos>=xPosBox && yPos>=yPosBox && xPos<=parseInt(parseInt(xPosBox)+parseInt(widthBox)) && yPos<=parseInt(parseInt(yPosBox)+parseInt(heightBox))){
         			elemento = $(this).clone().draggable({ containment: "parent",
                                           stop: function(event, ui){
                                                 comparaCuadrados();
@@ -46,25 +52,28 @@ $(document).ready(function(){
                                 elemento.prop('class', 'cuadrado');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
+                                elemento.offset({ top: yPos, left: xPos })
 			  }
 		}	
 	});
 	
 	$(".circulo").draggable({
 		start: function(event, ui){
-			  offset = $(this).position();
+			  offset = $(this).offset();
 			  xPosOld = offset.left;
 			  yPosOld = offset.top;
-			  offsetBox = $('#box').position();
+			  offsetBox = $('#box').offset();
 			  xPosBox = offsetBox.left;
 			  yPosBox = offsetBox.top;
+                          widthBox = $('#box').css('width');
+                          heightBox = $('#box').css('height');
 			  
 		},	
 		stop: function(event, ui){
-			  offset = $(this).position();
+			  offset = $(this).offset();
 			  xPos = offset.left;
 			  yPos = offset.top;
-			  if(xPos>xPosBox && yPos>yPosBox){
+			  if(xPos>=xPosBox && yPos>=yPosBox && xPos<=parseInt(parseInt(xPosBox)+parseInt(widthBox)) && yPos<=parseInt(parseInt(yPosBox)+parseInt(heightBox))){
         			elemento = $(this).clone().draggable({ containment: "parent",
                                           stop: function(event, ui){
                                              } }).dblclick(function(e){ 
@@ -82,6 +91,7 @@ $(document).ready(function(){
                                 elemento.prop('class', 'circulo');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
+                                elemento.offset({ top: yPos, left: xPos })
 			  }
 		}	
 	});
