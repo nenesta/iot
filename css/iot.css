@@ -9,7 +9,7 @@
 
 .icon-bar{
     width: 100px;//1206px; /* Full-width */
-    height: 72px; /* Full-height */
+    height: 260px; /* Full-height */
     background-color: #555; /* Dark-grey background */
     //overflow: auto; /* Overflow due to float */
     float: right;
@@ -28,6 +28,12 @@
 
 .icon-bar a:hover {
     background-color: #000; /* Add a hover color */
+}
+
+.switch-wrapper {
+  display: inline-block;
+  position: relative;
+  top: 3px;
 }
 
 .radar {

@@ -81,20 +81,37 @@ $(document).ready(function(){
                                                                             $(this).remove();
                                                                            });
 				elemento.css('position', 'absolute');
-				elemento.css('width', '36px');
-				elemento.css('height', '36px');
-                                elemento.css('-moz-border-radius', '50%');
-                                elemento.css('webkit-border-radius', '50%');
-                                elemento.css('border-radius', '50%');
-                                elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+                                elemento.css('color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
                                 elemento.prop('id', 'circ-'+contCirc++);
-                                elemento.prop('class', 'circulo');
+                                elemento.prop('class', 'fa fa-bluetooth circulo');
+                                elemento.css('font-size', '36px');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
                                 elemento.offset({ top: yPos, left: xPos })
 			  }
 		}	
 	});
+        
+    $('#chkBeacon').change(function(){
+       var valorCheck = $(this).prop('checked');
+       console.log('check '+ $(this).prop('checked'));
+           $('#box .circulo').each(function(index, value){
+//                    console.log(index);
+//                    console.log(value);
+                    var clase = $(value).prop('class');
+                    console.log(clase);
+                    if(valorCheck){
+                        console.log('Se activan beacons');
+                        clase = clase.replace('circulo', 'circulo radar');
+                    }else{
+                        console.log('Se desactivan beacons');
+                        clase = clase.replace('circulo radar', 'circulo');
+                    }; 
+                    console.log(clase);
+                    $(value).prop('class', clase);
+           });
+       
+    });    
 });
 
 function ordenaCuadrado(){
