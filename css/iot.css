@@ -1,18 +1,22 @@
 #box{
-     width: 1178px;
-     height: 400px;
-	 border-style: solid;
+     width: 100%;//calc(100% - 100px);//936px;//1178px;
+     height: 100%;//400px;
+     //height: inherit;
+     min-height: 415px;//477px;
+     //border-style: solid;
 	 //position : absolute
 	 //margin: 100px 0px 0px 0px;
      float: left;
 }
 
 .icon-bar{
-    width: 100px;//1206px; /* Full-width */
-    height: 260px; /* Full-height */
-    background-color: #555; /* Dark-grey background */
-    //overflow: auto; /* Overflow due to float */
+    //width: 100px;//1206px; /* Full-width */
+    //height: 260px;//100%;//400px;//260px; /* Full-height */
+    //min-height: 477px;
+    background-color: #2f4050;//#23527c;//#555; /* Dark-grey background */
+    overflow: hidden;//auto; /* Overflow due to float */
     float: right;
+    //left: calc(100% - 100px);
 }
 
 .icon-bar a {
@@ -21,13 +25,14 @@
     width: 100px; /* Equal width (5 icons with 20% width each = 100%)
     padding: 12px 0; /* Some top and bottom padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
-    color: yellow;//white; /* White text color */
+    color: #a7b1c2;//yellow;//white; /* White text color */
     font-size: 36px; /* Increased font size */
     //display: block;
 }
 
 .icon-bar a:hover {
-    background-color: #000; /* Add a hover color */
+    background-color: #293846;//#000; /* Add a hover color */
+    color: white;
 }
 
 .switch-wrapper {
@@ -63,6 +68,14 @@
     -moz-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
+
+.frmLbl{
+    width: 100px;
+}
+.frmTxt{
+    width: 200px;
+}
+
 @keyframes radar{
     0%{
         width:36px;//50px;

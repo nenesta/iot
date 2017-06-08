@@ -12,6 +12,49 @@ $(document).ready(function(){
 	var elemento;
         var contCuad=0;
         var contCirc=0;
+        var metro;
+/*
+        $('#pbDimension').addEventListener('click', function (e) {
+            var x = e.pageX - this.offsetLeft, // or e.offsetX (less support, though)
+                y = e.pageY - this.offsetTop,  // or e.offsetY
+                clickedValue = x * this.max / this.offsetWidth;
+
+            console.log(x, y, clickedValue);
+        });    
+*/        
+        $('#pbDimension').click(function (e) {
+//            var x = e.pageX - this.offsetLeft, // or e.offsetX (less support, though)
+            var x = e.pageX - $(this).offset().left, // or e.offsetX (less support, though)
+                y = e.pageY - this.offsetTop,  // or e.offsetY
+                clickedValue = parseInt((x / this.offsetWidth)*100);
+
+//            console.log('e.pageX '+e.pageX);
+//            console.log('this.offsetLeft '+this.offsetLeft);
+//            console.log('this.offset '+$(this).offset());
+//            console.log('this.offset.left '+$(this).offset().left);
+//            console.log('e.pageY '+e.pageY);
+//            console.log('this.offsetTop '+this.offsetTop);
+//            console.log('this.offsetWidth '+this.offsetWidth);
+            
+            console.log(x, y, clickedValue);
+            $(':first-child',this).css('width', clickedValue+'%');
+        });    
+
+        $("#iconBar")
+//            .css('overflow', 'hidden')
+            .dialog({
+                     width: "120px",
+                     position: { 
+                                 my: "right top",  at: "right top+10",  of: "#box"
+                               }
+                    });
+                    
+        $("#props").dialog({
+                             width: "340px",
+                             position: { 
+                                         my: "left top",  at: "left top+10",  of: "#box"
+                                       }
+                           });
         
         $("div.cuadrado").hover(function(){
         		////console.log("Estoy en el cuadrado "+ $(this).prop("id"));
@@ -33,27 +76,59 @@ $(document).ready(function(){
 			  offset = $(this).offset();
 			  xPos = offset.left;
 			  yPos = offset.top;
-                          
                           console.log('xPos '+xPos);
                           console.log('yPos '+yPos);
 			  if(xPos>=xPosBox && yPos>=yPosBox && xPos<=parseInt(parseInt(xPosBox)+parseInt(widthBox)) && yPos<=parseInt(parseInt(yPosBox)+parseInt(heightBox))){
         			elemento = $(this).clone().draggable({ containment: "parent",
                                           stop: function(event, ui){
                                                 comparaCuadrados();
-                                             } }).resizable().dblclick(function(e){ 
+                                                var lado = parseInt($(this).css('width')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                var ancho = parseInt($(this).css('height')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                $('#txtDim').val(parseFloat(lado).toFixed(2)+' x '+parseFloat(ancho).toFixed(2)+ ' [m]');
+                                                $('#txtName').val($(this).prop('id'));
+                                             } }).resizable({
+                                             stop:
+                                                function(event, ui){
+                                                    comparaCuadrados();
+                                                    var lado = parseInt($(this).css('width')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                    var ancho = parseInt($(this).css('height')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                    $('#txtDim').val(parseFloat(lado).toFixed(2)+' x '+parseFloat(ancho).toFixed(2)+ ' [m]');
+                                                    $('#txtName').val($(this).prop('id'));
+                                                }
+                                             }).dblclick(function(e){ 
                                                                             e.stopPropagation();
                                                                             $(this).remove();
                                                                            });
 				elemento.css('position', 'absolute');
 				elemento.css('width', '100px');
 				elemento.css('height', '100px');
-				elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+				elemento.css('-webkit-box-shadow', '10px 10px 6px -6px #777');
+				elemento.css('-moz-box-shadow', '10px 10px 6px -6px #777');
+				elemento.css('box-shadow', '10px 10px 6px -6px #777');
+//				elemento.css('background-color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+				elemento.css('background-color', '#d0d0d0');
+				elemento.css('border-style', 'solid');
+				elemento.css('border-width', '1px');
                                 elemento.prop('id', 'cuad-'+contCuad++);
                                 elemento.prop('class', 'cuadrado');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
                                 elemento.offset({ top: yPos, left: xPos })
-			  }
+/* 
+miDibujo.shadowColor="black";
+miDibujo.shadowOffsetX=10;
+miDibujo.shadowOffsetY=20;
+				elemento.css('shadowColor', 'black');
+				elemento.css('shadowOffsetX', '10');
+				elemento.css('shadowOffsetY', '10');
+
+                -webkit-box-shadow: 0 10px 6px -6px #777;
+                -moz-box-shadow: 0 10px 6px -6px #777;
+                box-shadow: 0 10px 6px -6px #777;
+*/                                
+			  }else{
+                                $(this).offset({ top: yPosOld, left: xPosOld });
+                          }
 		}	
 	});
 	
@@ -76,19 +151,23 @@ $(document).ready(function(){
 			  if(xPos>=xPosBox && yPos>=yPosBox && xPos<=parseInt(parseInt(xPosBox)+parseInt(widthBox)) && yPos<=parseInt(parseInt(yPosBox)+parseInt(heightBox))){
         			elemento = $(this).clone().draggable({ containment: "parent",
                                           stop: function(event, ui){
+                                              comparaCuadrados();
                                              } }).dblclick(function(e){ 
                                                                             e.stopPropagation();
                                                                             $(this).remove();
                                                                            });
 				elemento.css('position', 'absolute');
-                                elemento.css('color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+//                                elemento.css('color', 'rgb('+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+', '+parseInt(255*Math.random())+')');
+                                elemento.css('color', 'blue');
                                 elemento.prop('id', 'circ-'+contCirc++);
                                 elemento.prop('class', 'fa fa-bluetooth circulo');
                                 elemento.css('font-size', '36px');
                                 $(this).offset({ top: yPosOld, left: xPosOld });
 				$('#box').append(elemento);
                                 elemento.offset({ top: yPos, left: xPos })
-			  }
+			  }else{
+                                $(this).offset({ top: yPosOld, left: xPosOld });
+                          }
 		}	
 	});
         
@@ -179,7 +258,7 @@ function sortResults(json, prop, asc) {
         }
     });
 }
-
+/** Se agrega comentario ***/
 function comparaCuadrados(){
     var regs = [];
     $('#box .cuadrado, #box .circulo').each(function(){
@@ -208,8 +287,21 @@ function comparaCuadrados(){
                                 c2.draggable({containment: "parent",
                                               stop: function(event, ui){
                                                     comparaCuadrados();
+                                                    var lado = parseInt($(this).css('width')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                    var ancho = parseInt($(this).css('height')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                    $('#txtDim').val(parseFloat(lado).toFixed(2)+' x '+parseFloat(ancho).toFixed(2)+ ' [m]');
+                                                    $('#txtName').val($(this).prop('id'));
                                                  }                                
-                                             }).resizable().dblclick(function(e){ 
+                                             }).resizable({
+                                                stop:
+                                                   function(event, ui){
+                                                       comparaCuadrados();
+                                                       var lado = parseInt($(this).css('width')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                       var ancho = parseInt($(this).css('height')) / parseInt($('#pbDimension :first-child').css('width'));
+                                                       $('#txtDim').val(parseFloat(lado).toFixed(2)+' x '+parseFloat(ancho).toFixed(2)+ ' [m]');
+                                                       $('#txtName').val($(this).prop('id'));
+                                                   }
+                                             }).dblclick(function(e){ 
                                                                                 e.stopPropagation();
                                                                                 $(this).remove();
                                                                                });
